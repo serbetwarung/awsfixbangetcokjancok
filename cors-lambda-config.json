@@ -1,0 +1,15 @@
+{
+    "FunctionName": "diabetes-chat-cors",
+    "Runtime": "python3.9",
+    "Handler": "lambda_cors.lambda_handler",
+    "MemorySize": 128,
+    "Timeout": 3,
+    "Environment": {
+        "Variables": {
+            "LOG_LEVEL": "INFO"
+        }
+    },
+    "TracingConfig": {
+        "Mode": "Active"
+    }
+}

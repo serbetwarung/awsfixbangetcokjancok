@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Prediksi Diabetes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="history-styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="history-card">
+            <div class="header">
+                <h1><i class="fas fa-history"></i> Riwayat Prediksi Diabetes</h1>
+                <p>Daftar riwayat pemeriksaan Anda</p>
+            </div>
+
+            <div class="filters">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Cari berdasarkan nama...">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="filter-box">
+                            <select id="riskFilter" class="form-select">
+                                <option value="">Semua Tingkat Risiko</option>
+                                <option value="Rendah">Rendah</option>
+                                <option value="Sedang">Sedang</option>
+                                <option value="Tinggi">Tinggi</option>
+                                <option value="Sangat Tinggi">Sangat Tinggi</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="sort-box">
+                            <select id="sortOption" class="form-select">
+                                <option value="date-desc">Terbaru</option>
+                                <option value="date-asc">Terlama</option>
+                                <option value="name-asc">Nama (A-Z)</option>
+                                <option value="name-desc">Nama (Z-A)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="history-list" id="historyList">
+                <!-- Riwayat akan ditambahkan melalui JavaScript -->
+            </div>
+
+            <div class="no-data" id="noData" style="display: none;">
+                <i class="fas fa-folder-open"></i>
+                <p>Belum ada riwayat prediksi</p>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-primary" onclick="window.location.href='index.html'">
+                    <i class="fas fa-plus"></i> Prediksi Baru
+                </button>
+                <button class="btn btn-danger" onclick="clearHistory()">
+                    <i class="fas fa-trash"></i> Hapus Semua Riwayat
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus -->
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Konfirmasi Hapus</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah Anda yakin ingin menghapus semua riwayat?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-danger" onclick="confirmClearHistory()">Hapus</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="history.js"></script>
+</body>
+</html>

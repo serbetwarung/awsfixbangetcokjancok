@@ -1,0 +1,23 @@
+{
+    "resourceMethods": {
+        "OPTIONS": {
+            "methodIntegration": {
+                "type": "AWS_PROXY",
+                "uri": "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:203918881983:function:diabetes-chat-cors/invocations",
+                "passthroughBehavior": "WHEN_NO_MATCH",
+                "httpMethod": "POST",
+                "contentHandling": "CONVERT_TO_TEXT"
+            },
+            "methodResponses": {
+                "200": {
+                    "statusCode": "200",
+                    "responseParameters": {
+                        "method.response.header.Access-Control-Allow-Headers": true,
+                        "method.response.header.Access-Control-Allow-Methods": true,
+                        "method.response.header.Access-Control-Allow-Origin": true
+                    }
+                }
+            }
+        }
+    }
+}

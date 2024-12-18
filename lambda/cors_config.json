@@ -1,0 +1,10 @@
+{
+    "cors": {
+        "allowOrigin": "https://ventixcareku.my.id",
+        "allowMethods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        "allowHeaders": ["Content-Type", "X-Amz-Date", "Authorization", "X-Api-Key", "X-Amz-Security-Token", "X-Requested-With"],
+        "exposeHeaders": ["Content-Length", "X-Kuma-Revision"],
+        "maxAge": 86400,
+        "allowCredentials": true
+    }
+}

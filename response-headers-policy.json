@@ -1,0 +1,30 @@
+{
+    "ResponseHeadersPolicyConfig": {
+        "Name": "DiabetesPredictionSecurityHeaders",
+        "Comment": "Security headers for Diabetes Prediction App",
+        "SecurityHeadersConfig": {
+            "XSSProtection": {
+                "Override": true,
+                "Protection": true,
+                "ModeBlock": true
+            },
+            "ContentTypeOptions": {
+                "Override": true
+            },
+            "StrictTransportSecurity": {
+                "Override": true,
+                "IncludeSubdomains": true,
+                "Preload": true,
+                "AccessControlMaxAgeSec": 31536000
+            },
+            "ContentSecurityPolicy": {
+                "Override": true,
+                "ContentSecurityPolicy": "default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https:; connect-src 'self' https:;"
+            },
+            "FrameOptions": {
+                "Override": true,
+                "FrameOption": "DENY"
+            }
+        }
+    }
+}

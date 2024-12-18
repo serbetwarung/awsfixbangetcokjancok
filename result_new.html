@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Prediksi Diabetes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="result-styles.css">
+</head>
+
+<body class="fade-in">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="result-container slide-in-up">
+                    <div class="header text-center mb-5">
+                        <i class="fas fa-clipboard-check fa-3x mb-3 pulse"></i>
+                        <h1>Hasil Prediksi Diabetes</h1>
+                        <p class="patient-name" id="patientName"></p>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="info-card bmi-card">
+                                <div class="card-icon">
+                                    <i class="fas fa-weight"></i>
+                                </div>
+                                <h3>Body Mass Index (BMI)</h3>
+                                <div class="bmi-value" id="bmiValue"></div>
+                                <div class="bmi-category" id="bmiCategory"></div>
+                                <div class="bmi-chart">
+                                    <div class="bmi-scale">
+                                        <div class="scale-marker underweight">18.5</div>
+                                        <div class="scale-marker normal">25</div>
+                                        <div class="scale-marker overweight">30</div>
+                                    </div>
+                                    <div class="bmi-indicator" id="bmiIndicator"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-card risk-card">
+                                <div class="card-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3>Tingkat Risiko</h3>
+                                <div class="risk-level-card" id="riskLevel"></div>
+                                <div class="risk-description" id="riskDescription"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="health-metrics mb-4">
+                        <h3>
+                            <i class="fas fa-heartbeat me-2"></i>
+                            Metrik Kesehatan
+                        </h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="health-item">
+                                    <i class="fas fa-ruler-vertical"></i>
+                                    <h4>Tinggi Badan</h4>
+                                    <p id="heightValue"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="health-item">
+                                    <i class="fas fa-weight"></i>
+                                    <h4>Berat Badan</h4>
+                                    <p id="weightValue"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="health-item">
+                                    <i class="fas fa-running"></i>
+                                    <h4>Aktivitas Fisik</h4>
+                                    <p id="activityValue"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="recommendationsSection">
+                        <!-- Rekomendasi akan ditampilkan di sini -->
+                    </div>
+
+                    <!-- Tips Kesehatan Section -->
+                    <div class="health-tips mb-4">
+                        <h3>
+                            <i class="fas fa-lightbulb me-2"></i>
+                            Tips Kesehatan
+                        </h3>
+                        <div class="tips-container">
+                            <div class="tip-card">
+                                <i class="fas fa-utensils tip-icon"></i>
+                                <h4>Pola Makan Sehat</h4>
+                                <ul>
+                                    <li>Konsumsi makanan rendah gula dan karbohidrat</li>
+                                    <li>Perbanyak sayur dan buah segar</li>
+                                    <li>Pilih protein sehat seperti ikan dan kacang-kacangan</li>
+                                    <li>Batasi makanan olahan dan minuman manis</li>
+                                </ul>
+                            </div>
+                            <div class="tip-card">
+                                <i class="fas fa-running tip-icon"></i>
+                                <h4>Aktivitas Fisik</h4>
+                                <ul>
+                                    <li>Lakukan olahraga minimal 150 menit per minggu</li>
+                                    <li>Pilih aktivitas yang Anda nikmati</li>
+                                    <li>Kombinasikan latihan kardio dan kekuatan</li>
+                                    <li>Jaga konsistensi aktivitas fisik</li>
+                                </ul>
+                            </div>
+                            <div class="tip-card">
+                                <i class="fas fa-heart tip-icon"></i>
+                                <h4>Gaya Hidup Sehat</h4>
+                                <ul>
+                                    <li>Kelola stres dengan baik</li>
+                                    <li>Tidur cukup 7-8 jam per hari</li>
+                                    <li>Pantau gula darah secara teratur</li>
+                                    <li>Hindari rokok dan alkohol</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Referensi Jurnal Section -->
+                    <div class="journal-references mb-4">
+                        <h3>
+                            <i class="fas fa-book-medical me-2"></i>
+                            Referensi Jurnal
+                        </h3>
+                        <div class="references-container">
+                            <div class="reference-item">
+                                <p class="reference-title">Prevention of type 2 diabetes: A systematic review and meta-analysis</p>
+                                <p class="reference-authors">Haw, J. S., et al. (2021)</p>
+                                <p class="reference-journal">BMJ Open Diabetes Research & Care</p>
+                                <a href="https://drc.bmj.com/content/9/1/e002146" target="_blank" class="btn btn-link">
+                                    <i class="fas fa-external-link-alt"></i> Baca Selengkapnya
+                                </a>
+                            </div>
+                            <div class="reference-item">
+                                <p class="reference-title">Lifestyle intervention for prevention of diabetes: determinants of success for future implementation</p>
+                                <p class="reference-authors">Duijzer, G., et al. (2019)</p>
+                                <p class="reference-journal">Nutrition & Diabetes</p>
+                                <a href="https://www.nature.com/articles/s41387-019-0069-x" target="_blank" class="btn btn-link">
+                                    <i class="fas fa-external-link-alt"></i> Baca Selengkapnya
+                                </a>
+                            </div>
+                            <div class="reference-item">
+                                <p class="reference-title">Global and regional diabetes prevalence estimates for 2019 and projections for 2030 and 2045</p>
+                                <p class="reference-authors">Sun, H., et al. (2022)</p>
+                                <p class="reference-journal">Diabetes Research and Clinical Practice</p>
+                                <a href="https://www.sciencedirect.com/science/article/pii/S0168822721004915" target="_blank" class="btn btn-link">
+                                    <i class="fas fa-external-link-alt"></i> Baca Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn btn-primary" onclick="window.location.href='history.html'">
+                            <i class="fas fa-history me-2"></i>
+                            Lihat Riwayat
+                        </button>
+                        <button class="btn btn-secondary" onclick="window.print()">
+                            <i class="fas fa-print me-2"></i>
+                            Cetak Hasil
+                        </button>
+                        <button class="btn btn-success" onclick="window.location.href='index.html'">
+                            <i class="fas fa-redo me-2"></i>
+                            Mulai Baru
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="result.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+# Testing Dependencies
+pytest==7.4.3
+pytest-cov==4.1.0
+boto3==1.28.44
+moto==4.2.5  # For mocking AWS services
+
+# AWS SDK
+boto3>=1.26.0
+botocore>=1.29.0
+
+# Testing Tools
+locust==2.15.1
+selenium==4.11.2
+python-owasp-zap-v2.4==0.0.20
+pytest-selenium==4.0.1
+webdriver-manager==4.0.0
+
+# HTTP Client
+requests==2.31.0
+gevent==23.7.0
+
+# Security Tools
+safety==2.3.5
+bandit==1.7.5
+
+# Already installed separately
+# cryptography>=3.3.1

@@ -1,0 +1,93 @@
+{
+    "DistributionConfig": {
+        "CallerReference": "diabetes-prediction-app-2024",
+        "Origins": {
+            "Quantity": 1,
+            "Items": [
+                {
+                    "Id": "S3-diabetes-prediction-app-2024",
+                    "DomainName": "diabetes-prediction-app-2024.s3.amazonaws.com",
+                    "S3OriginConfig": {
+                        "OriginAccessIdentity": "origin-access-identity/cloudfront/EXXXXX"
+                    },
+                    "CustomHeaders": {
+                        "Quantity": 0
+                    }
+                }
+            ]
+        },
+        "DefaultCacheBehavior": {
+            "TargetOriginId": "S3-diabetes-prediction-app-2024",
+            "ViewerProtocolPolicy": "redirect-to-https",
+            "AllowedMethods": {
+                "Quantity": 3,
+                "Items": ["GET", "HEAD", "OPTIONS"],
+                "CachedMethods": {
+                    "Quantity": 2,
+                    "Items": ["GET", "HEAD"]
+                }
+            },
+            "ForwardedValues": {
+                "QueryString": true,
+                "Cookies": {
+                    "Forward": "none"
+                },
+                "Headers": {
+                    "Quantity": 3,
+                    "Items": ["Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers"]
+                }
+            },
+            "MinTTL": 0,
+            "DefaultTTL": 86400,
+            "MaxTTL": 31536000,
+            "Compress": true,
+            "LambdaFunctionAssociations": {
+                "Quantity": 0
+            }
+        },
+        "CustomErrorResponses": {
+            "Quantity": 2,
+            "Items": [
+                {
+                    "ErrorCode": 403,
+                    "ResponsePagePath": "/index.html",
+                    "ResponseCode": "200",
+                    "ErrorCachingMinTTL": 10
+                },
+                {
+                    "ErrorCode": 404,
+                    "ResponsePagePath": "/index.html",
+                    "ResponseCode": "200",
+                    "ErrorCachingMinTTL": 10
+                }
+            ]
+        },
+        "Comment": "Diabetes Prediction App Distribution",
+        "Enabled": true,
+        "DefaultRootObject": "index.html",
+        "WebACLId": "",
+        "HttpVersion": "http2",
+        "PriceClass": "PriceClass_100",
+        "Restrictions": {
+            "GeoRestriction": {
+                "RestrictionType": "none",
+                "Quantity": 0
+            }
+        },
+        "ViewerCertificate": {
+            "CloudFrontDefaultCertificate": true,
+            "MinimumProtocolVersion": "TLSv1.2_2021",
+            "CertificateSource": "cloudfront"
+        },
+        "CustomHeaders": {
+            "Quantity": 1,
+            "Items": [
+                {
+                    "HeaderName": "Strict-Transport-Security",
+                    "HeaderValue": "max-age=31536000; includeSubDomains",
+                    "Override": true
+                }
+            ]
+        }
+    }
+}

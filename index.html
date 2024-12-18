@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Diabetes - Healthcare Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c7be5;
+            --secondary-color: #6e84a3;
+            --success-color: #00d97e;
+            --warning-color: #f6c343;
+            --danger-color: #e63757;
+            --light-color: #f9fbfd;
+            --dark-color: #12263f;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f6f9fc 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .hero-section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(44, 123, 229, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            transform: rotate(45deg);
+            z-index: -1;
+            animation: pulse 8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1) rotate(45deg); }
+            50% { transform: scale(1.2) rotate(45deg); }
+            100% { transform: scale(1) rotate(45deg); }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .cta-button {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 123, 229, 0.3);
+        }
+
+        .floating-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            opacity: 0.1;
+        }
+
+        .statistics {
+            margin-top: 4rem;
+            padding: 2rem 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--secondary-color);
+            font-size: 1rem;
+        }
+
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .chat-header {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .btn-minimize {
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .chat-body {
+            padding: 1rem;
+        }
+
+        .chat-messages {
+            padding: 1rem;
+            overflow-y: auto;
+            max-height: 200px;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border-radius: 10px;
+        }
+
+        .bot-message {
+            background: #f0f0f0;
+        }
+
+        .chat-input {
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        #userInput {
+            width: 80%;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .btn-send {
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .chat-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <link href="chat-styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-heartbeat me-2"></i>
+                VentixCareKu
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Fitur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="floating-dots"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">Prediksi Risiko Diabetes</h1>
+                    <p class="hero-subtitle">
+                        Gunakan asisten kami untuk menilai risiko diabetes Anda berdasarkan faktor-faktor kesehatan pribadi.
+                        Dapatkan wawasan dan rekomendasi yang dipersonalisasi untuk gaya hidup yang lebih sehat.
+                    </p>
+                    <a href="home.html" class="btn btn-primary cta-button">
+                        <i class="fas fa-stethoscope me-2"></i>
+                        Mulai Prediksi
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="assets/hero-image.jpg" 
+                         alt="Healthcare Illustration" 
+                         class="img-fluid rounded-3 shadow-lg" 
+                         style="opacity: 0; animation: fadeInUp 1s ease 0.9s forwards; max-height: 400px; object-fit: cover;">
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="row mt-5" id="features">
+                <div class="col-md-4">
+                    <div class="feature-card" style="animation-delay: 0.3s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>Internasional Prediksi</h3>
+                        <p>Menggunakan Sumber Terpercaya terkini untuk memberikan prediksi akurat berdasarkan data kesehatan Anda.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card" style="animation-delay: 0.6s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Analisis Real-time</h3>
+                        <p>Dapatkan hasil analisis instan dan rekomendasi yang dipersonalisasi untuk kesehatan Anda.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card" style="animation-delay: 0.9s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Privasi Terjamin</h3>
+                        <p>Data Anda dienkripsi dan dilindungi dengan standar keamanan tertinggi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="statistics">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="10000">0</div>
+                            <div class="stat-label">Pengguna Aktif</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="95">0</div>
+                            <div class="stat-label">Akurasi Prediksi</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="24">0</div>
+                            <div class="stat-label">Jam Layanan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <div class="chat-title">
+                <i class="fas fa-robot me-2"></i>
+                Healthcare Assistant
+            </div>
+            <button id="minimizeChat" class="btn-minimize">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Halo! Saya adalah asisten kesehatan Anda. Ada yang bisa saya bantu tentang diabetes?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Ketik pesan Anda di sini...">
+                <button id="sendMessage" class="btn-send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <button id="toggleChat" class="chat-toggle">
+        <i class="fas fa-comment-medical"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="chat.js"></script>
+    <script>
+        // Animated dots background
+        function createDots() {
+            const dotsContainer = document.querySelector('.floating-dots');
+            const numberOfDots = 50;
+
+            for (let i = 0; i < numberOfDots; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.style.left = `${Math.random() * 100}%`;
+                dot.style.top = `${Math.random() * 100}%`;
+                dot.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                dot.style.animationDelay = `${Math.random() * 2}s`;
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        // Animate statistics
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-count'));
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    stat.textContent = Math.round(current);
+                    if (current >= target) {
+                        stat.textContent = target;
+                        clearInterval(timer);
+                    }
+                }, 20);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createDots();
+            animateStats();
+        });
+    </script>
+</body>
+</html>

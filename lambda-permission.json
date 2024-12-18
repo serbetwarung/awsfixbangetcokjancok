@@ -1,0 +1,7 @@
+{
+    "StatementId": "apigateway-cors",
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": "diabetes-chat-cors",
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": "arn:aws:execute-api:us-east-1:203918881983:ytn982zmy4/*/OPTIONS/chat"
+}

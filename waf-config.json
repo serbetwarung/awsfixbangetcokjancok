@@ -1,0 +1,82 @@
+{
+    "Name": "DiabetesPredictionWAF",
+    "Scope": "CLOUDFRONT",
+    "DefaultAction": {
+        "Allow": {}
+    },
+    "Rules": [
+        {
+            "Name": "BlockSQLInjection",
+            "Priority": 1,
+            "Statement": {
+                "SqliMatchStatement": {
+                    "FieldToMatch": {
+                        "QueryString": {}
+                    },
+                    "TextTransformations": [
+                        {
+                            "Priority": 1,
+                            "Type": "URL_DECODE"
+                        }
+                    ]
+                }
+            },
+            "Action": {
+                "Block": {}
+            },
+            "VisibilityConfig": {
+                "SampledRequestsEnabled": true,
+                "CloudWatchMetricsEnabled": true,
+                "MetricName": "SQLInjectionRule"
+            }
+        },
+        {
+            "Name": "RateLimitRule",
+            "Priority": 2,
+            "Statement": {
+                "RateBasedStatement": {
+                    "Limit": 2000,
+                    "AggregateKeyType": "IP"
+                }
+            },
+            "Action": {
+                "Block": {}
+            },
+            "VisibilityConfig": {
+                "SampledRequestsEnabled": true,
+                "CloudWatchMetricsEnabled": true,
+                "MetricName": "RateLimitRule"
+            }
+        },
+        {
+            "Name": "BlockXSS",
+            "Priority": 3,
+            "Statement": {
+                "XssMatchStatement": {
+                    "FieldToMatch": {
+                        "Body": {}
+                    },
+                    "TextTransformations": [
+                        {
+                            "Priority": 1,
+                            "Type": "HTML_ENTITY_DECODE"
+                        }
+                    ]
+                }
+            },
+            "Action": {
+                "Block": {}
+            },
+            "VisibilityConfig": {
+                "SampledRequestsEnabled": true,
+                "CloudWatchMetricsEnabled": true,
+                "MetricName": "XSSRule"
+            }
+        }
+    ],
+    "VisibilityConfig": {
+        "SampledRequestsEnabled": true,
+        "CloudWatchMetricsEnabled": true,
+        "MetricName": "DiabetesPredictionWAF"
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "FunctionName": "diabetes-chat",
+    "Runtime": "python3.9",
+    "Handler": "lambda_chat.lambda_handler",
+    "MemorySize": 256,
+    "Timeout": 30,
+    "Environment": {
+        "Variables": {
+            "CHAT_HISTORY_TABLE": "chat-history",
+            "LOG_LEVEL": "INFO"
+        }
+    },
+    "TracingConfig": {
+        "Mode": "Active"
+    }
+}

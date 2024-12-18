@@ -1,0 +1,18 @@
+{
+    "name": "DiabetesPredictionUsagePlan",
+    "description": "Usage plan for Diabetes Prediction API",
+    "quota": {
+        "limit": 1000,
+        "period": "DAY"
+    },
+    "throttle": {
+        "rateLimit": 10,
+        "burstLimit": 20
+    },
+    "apiStages": [
+        {
+            "apiId": "z7w5z5wrz5",
+            "stage": "prod"
+        }
+    ]
+}

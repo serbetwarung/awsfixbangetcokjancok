@@ -1,0 +1,253 @@
+/* Existing styles */
+.result-container {
+    background: #fff;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.header i {
+    color: #28a745;
+}
+
+.info-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #007bff;
+}
+
+.bmi-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.bmi-category {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.risk-level-card {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.risk-description {
+    color: #6c757d;
+}
+
+.health-metrics {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.health-item {
+    text-align: center;
+    padding: 1rem;
+}
+
+.health-item i {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+.actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Animation classes */
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+.slide-in-up {
+    animation: slideInUp 0.8s ease-out;
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* BMI Chart styles */
+.bmi-chart {
+    position: relative;
+    height: 30px;
+    background: #e9ecef;
+    border-radius: 15px;
+    margin: 1rem 0;
+}
+
+.bmi-scale {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 10px;
+}
+
+.scale-marker {
+    position: relative;
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.scale-marker::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    height: 10px;
+    width: 2px;
+    background: #6c757d;
+}
+
+.bmi-indicator {
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: #28a745;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.3s ease;
+}
+
+/* New styles for Health Tips */
+.health-tips {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.tips-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.tip-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.tip-card:hover {
+    transform: translateY(-5px);
+}
+
+.tip-icon {
+    font-size: 2rem;
+    color: #28a745;
+    margin-bottom: 1rem;
+}
+
+.tip-card h4 {
+    color: #343a40;
+    margin-bottom: 1rem;
+}
+
+.tip-card ul {
+    padding-left: 1.2rem;
+    margin-bottom: 0;
+}
+
+.tip-card li {
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+/* Journal References styles */
+.journal-references {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.references-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.reference-item {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.reference-item:hover {
+    transform: translateY(-5px);
+}
+
+.reference-title {
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 0.5rem;
+}
+
+.reference-authors {
+    color: #6c757d;
+    font-style: italic;
+    margin-bottom: 0.3rem;
+}
+
+.reference-journal {
+    color: #28a745;
+    margin-bottom: 1rem;
+}
+
+.btn-link {
+    color: #007bff;
+    padding: 0;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
